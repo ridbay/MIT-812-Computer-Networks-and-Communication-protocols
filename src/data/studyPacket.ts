@@ -42,21 +42,21 @@ Computer networks connect devices worldwide, enabling them to share data. Imagin
 
 ### 🧠 Important Models
 - **OSI Model (7 Layers)**: Application, Presentation, Session, Transport, Network, Data Link, Physical. (Mnemonic: *All People Seem To Need Data Processing*).
-- **TCP/IP Model (5 Layers)**: Application, Transport, Network, Link, Physical. This is the practical model used on the modern internet.
+- **TCP/IP Model (5 Layers)**: Application, Transport, Network, Data Link, Physical. *(Mnemonic bottom-to-top (back to the front): Please Do Not Throw Away)*. This is the practical model used on the modern internet.
 
 ### 💡 Examples & Memory Tips
 - **Analogy for Protocols**: Think of human protocols. "Hi" -> "Hello" -> "What is the time?" -> "2:00 PM". If computers don't speak the same protocol, they cannot understand each other.
 - **Packet vs Circuit Switching**: Packet switching is like a busy restaurant that doesn't take reservations (shared, sometimes you wait in queue). Circuit switching is a restaurant where you reserved a table in advance (guaranteed space, but inefficient if you leave it empty).
 
 ### 📐 Important Formulas
-- **Transmission Delay**: $L / R$ 
+- **Transmission Delay**: L / R 
   *(Where L is Packet Length in bits, and R is Link Transmission Rate in bits/sec)*
-- **End-to-End Delay (Store-and-Forward)**: $N * (L / R)$ 
+- **End-to-End Delay (Store-and-Forward)**: N * (L / R) 
   *(Where N is the number of links)*
 
 ### 🎯 Likely Exam Questions
 - **Q**: What are the four sources of packet delay?
-  **A**: 1) Nodal Processing, 2) Queuing, 3) Transmission, 4) Propagation.
+  **A**: 1) Nodal Processing, 2) Queuing, 3) Transmission, 4) Propagation. *(Mnemonic: People Queue To Pass)*
 - **Q**: Differentiate between Routing and Forwarding.
   **A**: **Routing** is global (planning the whole trip). **Forwarding** is local (moving a packet from the router's input to the correct output).
 
@@ -73,7 +73,7 @@ Computer networks connect devices worldwide, enabling them to share data. Imagin
 This layer is where network applications and their application-layer protocols reside. It's the only layer the average user interacts with. This is where your web browser (HTTP), email client (SMTP), and file downloader (FTP) operate.
 
 ### 🔑 Key Concepts & Definitions
-- **Client-Server Architecture**: Always-on server handles requests from intermittently connected clients (e.g., Web, Email).
+- **Client-Server Architecture**: Always-on. server handles requests from intermittently connected clients (e.g., Web, Email).
 - **P2P Architecture**: No always-on server. End systems (peers) directly communicate (e.g., BitTorrent). Highly scalable but harder to manage.
 - **Socket**: The "door" between the application process and the transport layer protocol.
 - **Port Numbers**: Used to identify specific processes on a host (e.g., Port 80 = HTTP, Port 25 = SMTP).
@@ -241,8 +241,8 @@ Network security ensures that data is **Confidential** (only sender/receiver can
 ### The 4 Major Delay Sources
 1. **Processing**: Checking bit errors, determining output link.
 2. **Queuing**: Waiting at the output link for transmission (depends on congestion).
-3. **Transmission**: Pushing bits onto the wire ($L/R$).
-4. **Propagation**: Time for a bit to physically travel the wire ($Distance / Speed of Light$).
+3. **Transmission**: Pushing bits onto the wire (L/R).
+4. **Propagation**: Time for a bit to physically travel the wire (Distance / Speed of Light).
 
 ### Critical Distinctions to Memorize
 - **TCP vs UDP**: Reliable/In-Order/Congestion Control vs. Fast/Unreliable.
@@ -988,7 +988,7 @@ Good luck with your exam! Focus on understanding the "why" behind these concepts
 **A:** The depletion of available unassigned IPv4 addresses.
 
 **Q:** What is 'IPv6's solution to exhaustion?
-**A:** A massive 128-bit address space ($2^{128}$ addresses).
+**A:** A massive 128-bit address space (2^{128} addresses).
 
 **Q:** What is 'Network Mask' vs 'Wildcard Mask'?
 **A:** Network mask identifies the network; wildcard mask is used in ACLs to match IP ranges.
