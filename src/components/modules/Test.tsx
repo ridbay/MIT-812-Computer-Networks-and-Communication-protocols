@@ -28,6 +28,7 @@ const Test: React.FC = () => {
     setCurrentIndex(0);
     setUserAnswers({});
     setScore(0);
+    setShowExplanation(true);
   };
 
   const handleOptionSelect = (option: string) => {
@@ -39,16 +40,16 @@ const Test: React.FC = () => {
   const handleNext = () => {
     if (currentIndex < TestMcqQuestions.length - 1) {
       setCurrentIndex(currentIndex + 1);
-      setShowExplanation(false);
+      setShowExplanation(true);
     } else {
-      handleFinish();
+      setTestState("intro");
     }
   };
 
   const handlePrev = () => {
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
-      setShowExplanation(false);
+      setShowExplanation(true);
     }
   };
 
@@ -104,7 +105,7 @@ const Test: React.FC = () => {
               marginBottom: "1rem",
             }}
           >
-            Continuous Assessment (CA) Test
+            CA Test Review Mode
           </h1>
           <p
             style={{
@@ -115,9 +116,9 @@ const Test: React.FC = () => {
               lineHeight: "1.6",
             }}
           >
-            This comprehensive test contains {TestMcqQuestions.length} questions
+            This review mode contains {TestMcqQuestions.length} questions
             covering all aspects of Data Communication and Computer Networks.
-            Test your knowledge and prepare for your exams.
+            The correct answers are pre-marked to help you study efficiently.
           </p>
 
           <div
@@ -138,8 +139,8 @@ const Test: React.FC = () => {
               style={{ width: "1px", background: "rgba(255,255,255,0.1)" }}
             />
             <div style={{ textAlign: "center" }}>
-              <div style={{ fontSize: "1.5rem", fontWeight: 700 }}>70%</div>
-              <div style={{ fontSize: "0.9rem", opacity: 0.5 }}>To Pass</div>
+              <div style={{ fontSize: "1.5rem", fontWeight: 700 }}>100%</div>
+              <div style={{ fontSize: "0.9rem", opacity: 0.5 }}>Pre-marked</div>
             </div>
           </div>
 
@@ -158,7 +159,7 @@ const Test: React.FC = () => {
               transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
             }}
           >
-            Start CA Test
+            Start Review
           </button>
         </motion.div>
 
@@ -171,14 +172,14 @@ const Test: React.FC = () => {
         >
           {[
             {
-              icon: <Award size={20} />,
-              title: "Detailed Results",
-              desc: "Get a comprehensive breakdown of your performance.",
+              icon: <CheckCircle2 size={20} />,
+              title: "Correct Answers Marked",
+              desc: "All questions have the correct answer highlighted for easy study.",
             },
             {
-              icon: <AlertCircle size={20} />,
-              title: "Passing Grade",
-              desc: "Aim for at least 70% to pass.",
+              icon: <HelpCircle size={20} />,
+              title: "Detailed Explanations",
+              desc: "Review the reasoning behind every correct answer.",
             },
           ].map((item, i) => (
             <div
@@ -362,21 +363,6 @@ const Test: React.FC = () => {
             Question {currentIndex + 1} of {TestMcqQuestions.length}
           </div>
         </div>
-        <button
-          onClick={handleFinish}
-          style={{
-            background: "transparent",
-            border: "1px solid rgba(255,255,255,0.1)",
-            color: "rgba(255, 255, 255, 0.6)",
-            padding: "0.5rem 1rem",
-            borderRadius: "10px",
-            fontSize: "0.85rem",
-            fontWeight: 600,
-            cursor: "pointer",
-          }}
-        >
-          Finish Early
-        </button>
       </div>
 
       {/* Progress Bar */}
@@ -431,10 +417,10 @@ const Test: React.FC = () => {
           <div style={{ display: "grid", gap: "1rem", flex: 1 }}>
             {Object.entries(currentQuestion?.options || {}).map(
               ([key, value]) => {
-                const isSelected = userAnswers[currentIndex] === key;
-                const hasAnswered = !!userAnswers[currentIndex];
                 const isCorrect = key === currentQuestion.answer;
-                const isWrong = isSelected && !isCorrect;
+                const isSelected = isCorrect;
+                const hasAnswered = true;
+                const isWrong = false;
 
                 let backgroundColor = "rgba(255,255,255,0.03)";
                 let borderColor = "rgba(255,255,255,0.1)";
@@ -574,7 +560,7 @@ const Test: React.FC = () => {
             }}
           >
             {currentIndex === TestMcqQuestions.length - 1
-              ? "Submit CA Test"
+              ? "End Review"
               : "Next Question"}
             <ChevronRight size={20} />
           </button>
